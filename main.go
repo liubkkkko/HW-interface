@@ -50,18 +50,27 @@ type Constructer interface {
 	fmt.Stringer
 }
 
-func PrintAll(c Constructer) {
-	fmt.Printf("%s and consumes %.2f kg of feed per month\n\n", c.String(), c.consumption())
+func calculated(animal []Constructer) float64 {
+	var foodNeedle float64
+	for _, animal:= range animal{
+		foodNeedle += animal.consumption()	
+		fmt.Printf("%s and consumes %.2f kg of feed per month\n\n", animal.String(), animal.consumption())	
+	}	
+	return foodNeedle
 }
 
 func main() {
-
 	dogConsumption := 10 / 2 //розрахунок кількості корму на один кілограм для собак
-	c := cat{name: "murchuk", feedConsumption: 7, weight: 5}
-	PrintAll(c)
-	d := dog{name: "barsik", feedConsumption: float64(dogConsumption), weight: 20}
-	PrintAll(d)
-	v := cov{name: "munia", feedConsumption: 25, weight: 100}
-	PrintAll(v)
-	fmt.Println(c.consumption()+v.consumption()+d.consumption(), "kilograms of fodder are required per month")
+	
+	sAnimal := []Constructer{
+		cat{name: "murchuk", weight: 2, feedConsumption: 7},
+		cat{name: "kitsa", weight: 3, feedConsumption: 7},
+		dog{name: "barsik", weight: 7, feedConsumption: float64(dogConsumption)},
+		dog{name: "vulkan", weight: 10, feedConsumption: float64(dogConsumption)},
+		cov{name: "munia", weight: 100, feedConsumption: 100},
+	}
+	fmt.Println(calculated(sAnimal), "kilograms of fodder are required per month")
+
 }
+
+
