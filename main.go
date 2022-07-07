@@ -62,14 +62,14 @@ func calculated(animal []Constructer) float64 {
 func main() {
 	dogConsumption := 10 / 2 //розрахунок кількості корму на один кілограм для собак
 	
-	sAnimal := []Constructer{
+	sliceAnimal := []Constructer{
 		cat{name: "murchuk", weight: 2, feedConsumption: 7},
 		cat{name: "kitsa", weight: 3, feedConsumption: 7},
 		dog{name: "barsik", weight: 7, feedConsumption: float64(dogConsumption)},
 		dog{name: "vulkan", weight: 10, feedConsumption: float64(dogConsumption)},
 		cov{name: "munia", weight: 100, feedConsumption: 100},
 	}
-	fmt.Println(calculated(sAnimal), "kilograms of fodder are required per month")
+	fmt.Println(calculated(sliceAnimal), "kilograms of fodder are required per month")
 
 }
 
